@@ -537,6 +537,16 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_os-bundle.css',
     },
+    'firefox_os_new': {
+        'source_filenames': (
+            'css/sandstone/sandstone-resp.less',
+            'css/base/mozilla-modal.less',
+            'css/firefox/family-nav.less',
+            'css/firefox/os/get_device.less',
+            'css/firefox/os/firefox-os-new.less',
+        ),
+        'output_filename': 'css/firefox_os_new-bundle.css',
+    },
     'firefox_os_ie': {
         'source_filenames': (
             'css/firefox/os/firefox-os-ie.less',
@@ -1325,6 +1335,22 @@ PIPELINE_JS = {
             'js/firefox/os/have-it.js',
         ),
         'output_filename': 'js/firefox_os-bundle.js',
+    },
+    'firefox_os_new': {
+        'source_filenames': (
+            'js/base/mozilla-modal.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/libs/tweenmax.1.9.7.min.js',
+            'js/libs/superscrollorama-1.0.1.js',
+            'js/libs/jquery.color.js',
+            'js/libs/script.js',
+            'js/firefox/family-nav.js',
+            'js/firefox/os/firefox-os-new.js',
+            'js/firefox/os/desktop.js',
+            'js/firefox/os/have-it.js',
+        ),
+        'output_filename': 'js/firefox_os_new-bundle.js',
     },
     'firefox_os_ie9': {
         'source_filenames': (

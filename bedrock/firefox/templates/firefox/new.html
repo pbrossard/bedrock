@@ -111,7 +111,7 @@
               <li><a href="https://support.mozilla.org/products/firefox">{{_('Need help?')}}</a></li>
               {% if l10n_has_tag('mobile_links') %}
               <li class="hide-for-refresh"><a href="{{settings.GOOGLE_PLAY_FIREFOX_LINK }}">{{_('Get Firefox on your Android device')}}</a></li>
-              <li class="hide-for-refresh"><a href="{{ url('firefox.os.index') }}">{{_('Learn about Firefox OS')}}</a></li>
+              <li class="hide-for-refresh"><a href="{{ url('fxos') }}">{{_('Learn about Firefox OS')}}</a></li>
               {% endif %}
               <li><a href="{{ url('firefox.all') }}">{{_('Download a fresh copy')}}</a></li>
             </ul>
@@ -123,7 +123,7 @@
           </div>
           <div class="fxos-latest-links-wrapper latest-links-wrapper">
             <ul>
-              <li><a href="{{ url('firefox.os.index') }}">{{_('Learn about Firefox OS')}}</a></li>
+              <li><a href="{{ url('fxos') }}">{{_('Learn about Firefox OS')}}</a></li>
               <li><a href="{{ settings.GOOGLE_PLAY_FIREFOX_LINK }}">{{_('Discover all the ways to take Firefox on the go')}}</a></li>
             </ul>
           </div>
@@ -136,7 +136,7 @@
                   <a href="{{ settings.GOOGLE_PLAY_FIREFOX_LINK }}">{{_('Get Firefox on your Android device')}}</a>
                 </li>
                 <li>
-                  <a href="{{ url('firefox.os.index') }}">{{_('Learn about Firefox OS')}}</a>
+                  <a href="{{ url('fxos') }}">{{_('Learn about Firefox OS')}}</a>
                 </li>
                 <li>
                   <a href="https://support.mozilla.org/kb/is-firefox-available-iphone-or-ipad">{{_('Why don’t we offer an iOS version?')}}</a>

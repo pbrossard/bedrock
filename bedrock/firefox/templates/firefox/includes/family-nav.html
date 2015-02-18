@@ -92,7 +92,7 @@ are those changes? We don't know yet! Stay on your toes!
         {# L10n: The <span> elements below are for visual formatting #}
         <li><a href="{{ url('firefox.desktop.index') }}" class="primary-link" data-id="desktop">{{ _('<span>for</span> Desktop') }}</a></li>
         <li><a href="{{ url('firefox.android.index') }}" class="primary-link" data-id="android">{{ _('<span>for</span> Android') }}</a></li>
-        <li><a href="{{ url('firefox.os.index') }}" class="primary-link" data-id="os">{{ _('OS') }}</a></li>
+        <li><a href="{{ url('fxos') }}" class="primary-link" data-id="os">{{ _('OS') }}</a></li>
       </ul>
 
       <div id="fxfamilynav-subnav">
@@ -108,7 +108,7 @@ are those changes? We don't know yet! Stay on your toes!
         </ul>
 
         <ul class="subnav active" data-parent="os">
-          <li><a href="{{ url('firefox.os.index') }}" data-id="os-index">{{ _('About') }}</a></li>
+          <li><a href="{{ url('fxos') }}" data-id="os-index">{{ _('About') }}</a></li>
           <li><a href="{{ url('firefox.os.devices') }}" data-id="os-devices">{{ _('Devices') }}</a></li>
           <li><a href="{{ url('firefox.partners.index') }}" data-id="os-partners">{{ _('For partners') }}</a></li>
           <li><a href="{{ url('firefox.os.mwc-2015-preview') }}" data-id="os-mwc"><i class="icon-mwc"></i>{{ _('MWC 2015') }}</a></li>

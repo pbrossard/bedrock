@@ -19,6 +19,7 @@ import waffle
 from funfactory.helpers import static
 from funfactory.urlresolvers import reverse
 from lib import l10n_utils
+from lib.l10n_utils.dotlang import lang_file_is_active
 
 from bedrock.releasenotes import version_re
 from bedrock.firefox.forms import SMSSendForm
@@ -539,6 +540,17 @@ class TourView(LatestFxView):
 
         # return a list to conform with original intention
         return [template]
+
+
+def fxos(request):
+    locale = l10n_utils.get_locale(request)
+    old_home = 'firefox/os/index.html'
+    new_home = 'firefox/os/index-new.html'
+
+    if lang_file_is_active(new_home, locale):
+        return l10n_utils.render(request, new_home)
+    else:
+        return l10n_utils.render(request, old_home)
 
 
 def hello(request):
