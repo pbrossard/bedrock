@@ -476,7 +476,7 @@ PIPELINE_CSS = {
             'css/firefox/menu-resp.less',
             'css/base/mozilla-accordion.less',
             'css/base/mozilla-modal.less',
-            'css/libs/mapbox-1.6.3.css',
+            'css/libs/mapbox-2.1.5.css',
             'css/firefox/geolocation.less'
         ),
         'output_filename': 'css/firefox_geolocation-bundle.css',
@@ -1472,7 +1472,7 @@ PIPELINE_JS = {
     },
     'geolocation': {
         'source_filenames': (
-            'js/libs/mapbox-1.6.3.js',
+            'js/libs/mapbox-2.1.5.js',
             'js/base/mozilla-accordion.js',
             'js/base/mozilla-accordion-gatrack.js',
             'js/firefox/geolocation-demo.js',
