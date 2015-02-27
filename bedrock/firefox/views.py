@@ -227,10 +227,19 @@ def all_downloads(request, channel):
 
 
 def firefox_os_index(request):
+
+    locale = l10n_utils.get_locale(request)
+    lang_file = 'firefox/os/index-new'
+    old_home = 'firefox/os/index.html'
+    new_home = 'firefox/os/index-new.html'
+
     if waffle.switch_is_active('firefox-os-index-2015'):
-        return l10n_utils.render(request, 'firefox/os/index-2015.html')
+        if lang_file_is_active(lang_file, locale):
+            return l10n_utils.render(request, new_home)
+        else:
+            return l10n_utils.render(request, old_home)
     else:
-        return l10n_utils.render(request, 'firefox/os/index.html')
+        return l10n_utils.render(request, old_home)
 
 
 @csrf_protect
@@ -540,18 +549,6 @@ class TourView(LatestFxView):
 
         # return a list to conform with original intention
         return [template]
-
-
-def firefox_os_index(request):
-    locale = l10n_utils.get_locale(request)
-    lang_file = 'firefox/os/index-new'
-    old_home = 'firefox/os/index.html'
-    new_home = 'firefox/os/index-new.html'
-
-    if lang_file_is_active(lang_file, locale):
-        return l10n_utils.render(request, new_home)
-    else:
-        return l10n_utils.render(request, old_home)
 
 
 def hello(request):

@@ -245,11 +245,6 @@
 
             // setup GA event tracking on telecom provider exit links
             $('#provider-links a').on('click', trackProviderExit);
-
-            // persistent pencil icon is distracting/obtrusive on small screens
-            if ($window.width() > 480) {
-                $('#signup-toggle-icon').fadeIn();
-            }
         } else {
             $('#primary-cta-signup').removeClass('hidden');
         }

@@ -9,6 +9,7 @@
 ;(function($) {
     'use strict';
 
+    window.pause_ga_tracking = false;
     var COUNTRY_CODE = '';
 
     var $document = $(document);
