@@ -21,3 +21,13 @@ def firefox_os_feed_links(locale, force_cache_refresh=False):
         return links
     elif '-' in locale:
         return firefox_os_feed_links(locale.split('-')[0])
+
+
+@jingo.register.function
+def get_fxos_press_blog_link(locale):
+    if locale in settings.FXOS_PRESS_BLOG_LINKS:
+        return settings.FXOS_PRESS_BLOG_LINKS[LANG]
+    elif locale.find('es-') and not locale.find('es-ES'):
+        return settings.FXOS_PRESS_BLOG_LINKS['es']
+    else:
+        return settings.FXOS_PRESS_BLOG_LINKS[locale.split('-')[0]]

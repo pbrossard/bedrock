@@ -1,7 +1,7 @@
 @import "../../sandstone/lib.less";
 
 * {
-    box-sizing: border-box;
+    .border-box();
 }
 #outer-wrapper {
     background: #0c99d5 url(/media/img/firefox/os-new/raysoflight.png) 0 0 no-repeat;
@@ -46,7 +46,7 @@ main {
     }
     h2 {
         .open-sans-light();
-        font-size: 3rem;
+        .font-size(3rem);
     }
     h2, h3 {
         color: white;
@@ -148,7 +148,7 @@ main {
     height: 415px;
     overflow: hidden;
     clear: both;
-    transition: height .3s;
+    .transition(height .3s);
 
     @media only screen and (max-width: 1600px) {
         padding-top: 2em;
@@ -184,7 +184,7 @@ main {
     top: 0;
     margin: 0 auto;
     opacity: 1;
-    transition: all .7s;
+    .transition(all .7s);
     .signup {
         margin-bottom: 10px;
     }
@@ -200,14 +200,13 @@ main {
     position: absolute;
     top: -824px;
     left: 353px;
-    transform: scale(.3, .3);
+    .transform(scale(.3, .3));
     opacity: 0;
 }
 .fxos-cta,
 .phone-container {
     position: relative;
     display: inline-block;
-    /* width: 550px; */
     width: 45%;
     vertical-align: middle;
 
@@ -220,7 +219,7 @@ main {
     img {
         width: 520px;
         height: 394px;
-        transition: all 1s;
+        .transition(all 1s);
 
         @media only screen and (max-width: 1600px) {
             width: 520px;
@@ -273,44 +272,53 @@ main {
     height: 134px;
 }
 .throbber {
-  position: absolute;
-  top: 75px;
-  left: 77px;
-  display: inline-block;
-  background-color: white;
-  border-radius: 100px;
-  width: 100px;
-  height: 100px;
-  opacity: 0;
-  transform: scale(0, 0);
+    position: absolute;
+    top: 75px;
+    left: 77px;
+    display: inline-block;
+    background-color: white;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    .transform(scale(0, 0));
 
-  animation-name: throb;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+    -webkit-animation-name: throb;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+
+    animation-name: throb;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 .try-swipe .throbber {
     top: 75px;
     left: -43px;
 }
 .throb-one {
-  animation-delay: 0;
+    -webkit-animation-delay: 0;
+    animation-delay: 0;
 }
 .throb-two {
-  animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
 }
 .throb-three {
-  animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
 }
 .throb-four {
-  animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
 }
 .demo {
     position: relative;
     width: 0;
     height: 0;
     opacity: 0;
-    transition: opacity 3s;
+    .transition(opacity 3s);
     h2 {
         margin-bottom: 1em;
         font-size: 3.5em;
@@ -543,7 +551,7 @@ main {
 }
 .fxos-news {
     background-color: #f2f2f2;
-    padding: 80px 0px 100px;
+    padding: 50px 0px 40px;
 
     @media only screen and (max-width: @breakMobile) {
         padding: 30px 43px 10px;
@@ -572,6 +580,8 @@ main {
         padding: 0;
         list-style: none;
         font-size: 1.2em;
+        text-align: left;
+        line-height: 1.1;
 
         @media only screen and (max-width: @breakMobile) {
             width: 86%;
@@ -677,7 +687,7 @@ ul {
             width: 142px;
             height: 142px;
             opacity: 1;
-            transition: all .5s ease-in;
+            .transition(all .5s ease-in);
 
             @media only screen and (max-width: @breakMobile) {
                 width: 71px;
@@ -685,7 +695,7 @@ ul {
             }
         }
         .fade {
-            transform: scale(.5, .5);
+            .transform(scale(.5, .5));
             opacity: .4;
         }
     }
@@ -809,6 +819,17 @@ ul {
 .scroll-homescreen.animate {
     display: block;
 
+    @-webkit-keyframes scroll-homescreen {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 0 -303px;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
     @keyframes scroll-homescreen {
         0% {
             background-position: 0 0;
@@ -828,6 +849,26 @@ ul {
 .swipe-apps.animate {
     display: block;
 
+    @-webkit-keyframes swipe {
+        15% {
+            left: 262px;
+        }
+        40% {
+            left: -50px;
+        }
+        65% {
+            left: -357px;
+        }
+        70% {
+            left: -50px;
+        }
+        75% {
+            left: 262px;
+        }
+        90% {
+            left: 571px;
+        }
+    }
     @keyframes swipe {
         15% {
             left: 262px;
@@ -846,6 +887,27 @@ ul {
         }
         90% {
             left: 571px;
+        }
+    }
+
+    @-webkit-keyframes swipe-screens {
+        15% {
+            background-position: -310px 0;
+        }
+        40% {
+            background-position: -621px 0;
+        }
+        65% {
+            background-position: -926px 0;
+        }
+        70% {
+            background-position: -621px 0;
+        }
+        75% {
+            background-position: -310px 0;
+        }
+        90% {
+            background-position: 0 0;
         }
     }
     @keyframes swipe-screens {
@@ -877,21 +939,39 @@ ul {
     }
 }
 
-@keyframes throb {
+@-webkit-keyframes throb {
   0% {
-    transform: scale(.2, .2);
+    .transform(scale(.2, .2));
     opacity: .5;
   }
   25% {
-    transform: scale(.5, .5);
+    .transform(scale(.5, .5));
     opacity: .5;
   }
   50% {
-    transform: scale(1, 1);
+    .transform(scale(1, 1));
     opacity: .3;
   }
   100% {
-    transform: scale(1.5, 1.5);
+    .transform(scale(1.5, 1.5));
+    opacity: 0;
+  }
+}
+@keyframes throb {
+  0% {
+    .transform(scale(.2, .2));
+    opacity: .5;
+  }
+  25% {
+    .transform(scale(.5, .5));
+    opacity: .5;
+  }
+  50% {
+    .transform(scale(1, 1));
+    opacity: .3;
+  }
+  100% {
+    .transform(scale(1.5, 1.5));
     opacity: 0;
   }
 }

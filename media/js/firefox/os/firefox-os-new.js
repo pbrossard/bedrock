@@ -11,6 +11,55 @@
 
     Mozilla.FxFamilyNav.init(fxNavConfig);
 
+    var $window = $(window);
+    var isSmallViewport = $window.width() < 760;
+    var $signup_content;
+    var $get_phone_content;
+
+    /*
+    * Sign up form
+    */
+    $('.newsletter-signup-toggle').on('click', function(e) {
+      e.preventDefault();
+
+      var cta = (this.id === 'signup-toggle-icon') ? 'Sign Me Up - Nav' : 'Sign Me Up - Primary';
+
+      if (!$signup_content) {
+        $signup_content = $('#email-form-content').detach();
+      }
+
+      Mozilla.Modal.createModal(this, $signup_content, {
+          allowScroll: !isSmallViewport,
+          title: '<img src="/media/img/firefox/os/logo/firefox-os-white.png" alt="mozilla" />'
+      });
+
+      //track GA event for newsletter CTA
+      gaTrack(['_trackEvent', 'FxOs Consumer Page', 'click', cta]);
+    });
+
+    $('#sign-up-form-close').on('click', function() {
+      Mozilla.Modal.closeModal();
+    });
+
+    /*
+    * Purchase modal
+    */
+    $('a[href="#get-device"]').on('click', function(e) {
+      e.preventDefault();
+
+      if (!$get_phone_content) {
+        $get_phone_content = $('#get-device').detach();
+      }
+
+      Mozilla.Modal.createModal(this, $get_phone_content, {
+          allowScroll: !isSmallViewport,
+          title: '<img src="/media/img/firefox/os/logo/firefox-os-white.png" alt="mozilla" />'
+      });
+
+      //track GA event for get a phone CTA
+      gaTrack(['_trackEvent', 'FxOs Consumer Page', 'click', 'Get a Phone']);
+    });
+
     var $appGroupSelector = $('.app-group-selector');
     var $apps = $('img', '.apps');
     var $categoryTriggers = $('a', $appGroupSelector);
@@ -27,7 +76,7 @@
         // set the clicked element to active
         $eventTarget.addClass('active-state');
 
-        $apps.each(function(app) {
+        $apps.each(function() {
             var $currentImg = $(this);
             if ($currentImg.hasClass(category)) {
                 $currentImg.removeClass('fade');
@@ -117,12 +166,13 @@
     });
 
     var COUNTRY_CODE = '';
+    window.pause_ga_tracking = false;
+
     /*
     * Get country code via geo-ip lookup
     */
     function getGeoLocation () {
         try {
-            console.log('COUNTRY_CODE', geoip_country_code());
             COUNTRY_CODE = geoip_country_code().toLowerCase();
         } catch (e) {
             console.log('error', e);
@@ -157,28 +207,6 @@
         }
     }
 
-    window.trackGAEvent = function (eventsArray, callback) {
-        if (!pause_ga_tracking) {
-            var timer = null;
-            var hasCallback = typeof(callback) == 'function';
-            var gaCallback = function () {
-                clearTimeout(timer);
-                callback();
-            };
-
-            if (typeof(window._gaq) == 'object') {
-                if (hasCallback) {
-                    timer = setTimeout(gaCallback, 500);
-                    window._gaq.push(eventsArray, gaCallback);
-                } else {
-                    window._gaq.push(eventsArray);
-                }
-            } else if (hasCallback) {
-                callback();
-            }
-        }
-    };
-
     /*
     * Track telecom provider link clicks/page exits in Google Analytics
     */
@@ -191,7 +219,7 @@
             window.location = href;
         };
 
-        trackGAEvent(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()], callback);
+        gaTrack(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()], callback);
     }
 
     /*
@@ -199,7 +227,6 @@
     */
     function setPartnerContent () {
 
-        var $window = $(window);
         var $provider = $('#provider-links').find('.provider[data-country="' + COUNTRY_CODE + '"]');
 
         // if there are partners available, update UI

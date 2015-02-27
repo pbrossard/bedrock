@@ -1341,14 +1341,9 @@ PIPELINE_JS = {
             'js/base/mozilla-modal.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.waypoints-sticky.min.js',
-            'js/libs/tweenmax.1.9.7.min.js',
-            'js/libs/superscrollorama-1.0.1.js',
-            'js/libs/jquery.color.js',
             'js/libs/script.js',
             'js/firefox/family-nav.js',
             'js/firefox/os/firefox-os-new.js',
-            'js/firefox/os/desktop.js',
-            'js/firefox/os/have-it.js',
         ),
         'output_filename': 'js/firefox_os_new-bundle.js',
     },
@@ -2088,6 +2083,17 @@ PRESS_BLOGS = {
     'fr': 'press-fr/',
     'it': 'press-it/',
     'pl': 'press-pl/',
+}
+
+FXOS_PRESS_BLOG_LINKS = {
+    'en': 'https://blog.mozilla.org/press/category/firefox-os/',
+    'de': 'https://blog.mozilla.org/press-de/category/firefox-os/',
+    'es-ES': 'https://blog.mozilla.org/press-es/category/firefox-os/',
+    'es': 'https://blog.mozilla.org/press-latam/category/firefox-os/',
+    'fr': 'https://blog.mozilla.org/press-fr/category/firefox-os/',
+    'it': 'https://blog.mozilla.org/press-it/category/firefox-os/',
+    'pb-BR': 'https://blog.mozilla.org/press-br/category/firefox-os/',
+    'pl': 'https://blog.mozilla.org/press-pl/category/firefox-os/',
 }
 
 MOBILIZER_LOCALE_LINK = {

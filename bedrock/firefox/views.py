@@ -542,7 +542,7 @@ class TourView(LatestFxView):
         return [template]
 
 
-def fxos(request):
+def firefox_os_index(request):
     locale = l10n_utils.get_locale(request)
     old_home = 'firefox/os/index.html'
     new_home = 'firefox/os/index-new.html'
