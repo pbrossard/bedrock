@@ -544,10 +544,11 @@ class TourView(LatestFxView):
 
 def firefox_os_index(request):
     locale = l10n_utils.get_locale(request)
+    lang_file = 'firefox/os/index-new'
     old_home = 'firefox/os/index.html'
     new_home = 'firefox/os/index-new.html'
 
-    if lang_file_is_active(new_home, locale):
+    if lang_file_is_active(lang_file, locale):
         return l10n_utils.render(request, new_home)
     else:
         return l10n_utils.render(request, old_home)
