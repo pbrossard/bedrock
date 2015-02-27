@@ -213,15 +213,20 @@
     * Track telecom provider link clicks/page exits in Google Analytics
     */
     function trackProviderExit (e) {
-        e.preventDefault();
         var $this = $(this);
+        var newTab = (this.target === '_blank' || e.metaKey || e.ctrlKey);
         var href = this.href;
 
         var callback = function () {
             window.location = href;
         };
 
-        gaTrack(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()], callback);
+        if (newTab) {
+            gaTrack(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()]);
+        } else {
+            e.preventDefault();
+            gaTrack(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()], callback);
+        }
     }
 
     /*
