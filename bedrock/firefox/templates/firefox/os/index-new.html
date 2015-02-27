@@ -49,7 +49,7 @@
           <div href="#" class="phone-container">
             <img src="{{ static('img/firefox/os-new/device_static.png') }}" width="520" height="394" alt="{{_('Firefox OS device illustration')}}" />
 
-            <!-- device demo triggers, not going live on March 1, so commenting out for now
+            {# device demo triggers, not going live on March 1, so commenting out for now
             <a href="#" id="trigger-homescreen" class="try-homescreen" role="button">
               TODO: descriptive content to be added post March 1 for a11y
               <div class="throbber throb-one"></div>
@@ -64,11 +64,11 @@
               <div class="throbber throb-two"></div>
               <div class="throbber throb-three"></div>
               <div class="throbber throb-four"></div>
-            </a> -->
+            </a> #}
           </div>
         </div>
 
-        <!-- device demo, not going live on March 1, so commenting out for now
+        {# device demo, not going live on March 1, so commenting out for now
         <div class="demo">
           <h2>{{_('Give these a try')}}</h2>
           <a href="#" id="close-demo" class="close">
@@ -89,7 +89,7 @@
             <li><a href="#" id="scroll-homescreen" class="active-state">{{_('Scroll the homepage')}}</a></li>
             <li><a href="#" id="swipe-apps">{{_('Swipe between apps')}}</a></li>
           </ul>
-        </div> -->
+        </div> #}
       </div>
     </section>
     <section class="fxos-features">
@@ -118,9 +118,9 @@
       <div class="content-wrapper">
         <h2>{{_('Apps for all you do')}}</h2>
         <ul class="app-group-selector">
-          <li><a href="#" id="connected" data-category="connected">{{_('Stay connected')}}</a></li>
-          <li><a href="#" id="entertained" data-category="entertained">{{_('Stay entertained')}}</a></li>
-          <li><a href="#" id="organized" data-category="organized">{{_('Stay organized')}}</a></li>
+          <li><a href="#" id="connected" data-category="connected" role="button">{{_('Stay connected')}}</a></li>
+          <li><a href="#" id="entertained" data-category="entertained" role="button">{{_('Stay entertained')}}</a></li>
+          <li><a href="#" id="organized" data-category="organized" role="button">{{_('Stay organized')}}</a></li>
         </ul>
         <ul class="apps">
           <li><img src="{{ static('img/firefox/os-new/icons/dialer.png') }}" width="142" height="142" class="connected fade" alt="{{_('Phone')}}" /></li>
@@ -159,7 +159,7 @@
             <span>Line</span>
           </li>
         </ul>
-        <a href="https://marketplace.firefox.com/" class="cta-button marketplace">{{_('Go to the Marketplace')}}</a>
+        <a href="https://marketplace.firefox.com/" class="cta-button marketplace" rel="external">{{_('Go to the Marketplace')}}</a>
         <p class="footnote">{{_('* Pre-installed apps may vary by manufacturers and operators.')}}</p>
       </div>
     </section>
@@ -170,8 +170,7 @@
       <div class="content-wrapper">
         <aside>
           <h2>{{_('In the news')}}</h2>
-          {% set see_more = get_fxos_press_blog_link(LANG) %}
-          <p><a href="{{ see_more }}">{{_('See more')}}</a></p>
+          <p><a href="{{ firefox_os_blog_link(LANG) }}">{{_('See more')}}</a></p>
         </aside>
         <ul>
           {% for link, title in feed_links %}
@@ -187,7 +186,7 @@
         <img src="{{ static('img/firefox/os-new/mozilla_groupshot.png') }}" width="260" height="260" alt="{{_('Mozilla community photo')}}" />
         <h2>{{_('Powered by the Mozilla community')}}</h2>
         <p>{{_('Mozilla is a non-profit organization fueled by a passionate global community. Together, we’re able to create and innovate with local interests in mind, while making the Web better and more accessible for everyone everywhere.')}}</p>
-        <p><a href="https://www.mozilla.org/">{{_('Learn more about Mozilla')}}</a></p>
+        <p><a href="{{ url('mozorg.home') }}">{{_('Learn more about Mozilla')}}</a></p>
       </div>
     </section>
     <section class="fxos-help">
@@ -195,15 +194,15 @@
         <div class="help">
           <h3>{{_('Need Help?')}}</h3>
           <ul>
-            <li><a href="https://support.mozilla.org/products/firefox-os">{{_('Firefox OS Support')}}</a></li>
-            <li><a href="https://find.firefox.com/">{{_('Find My Device')}}</a></li>
+            <li><a href="https://support.mozilla.org/products/firefox-os" rel="external">{{_('Firefox OS Support')}}</a></li>
+            <li><a href="https://find.firefox.com/" rel="external">{{_('Find My Device')}}</a></li>
           </ul>
         </div>
         <div class="help">
           <h3>{{_('For Developers')}}</h3>
           <ul>
-            <li><a href="https://developer.mozilla.org">{{_('Mozilla Developer Network')}}</a></li>
-            <li><a href="https://webmaker.org/appmaker">{{_('Mozilla Appmaker')}}</a></li>
+            <li><a href="https://developer.mozilla.org" rel="external">{{_('Mozilla Developer Network')}}</a></li>
+            <li><a href="https://webmaker.org/appmaker" rel="external">{{_('Mozilla Appmaker')}}</a></li>
             <li><a href="https://www.mozilla.org/firefox/os/devices/">{{_('Firefox OS devices')}}</a></li>
             <li><a href="https://www.mozilla.org/firefox/os/devices/tv/">{{_('Other Firefox OS versions')}}</a></li>
           </ul>
@@ -211,7 +210,7 @@
         <div class="help">
           <h3>{{_('For Partners')}}</h3>
           <ul>
-            <li><a href="https://mobilepartners.mozilla.org/">{{_('Partnership opportunities')}}</a></li>
+            <li><a href="https://mobilepartners.mozilla.org/" rel="external">{{_('Partnership opportunities')}}</a></li>
           </ul>
         </div>
       </div>

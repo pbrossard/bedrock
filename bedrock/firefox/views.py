@@ -233,11 +233,8 @@ def firefox_os_index(request):
     old_home = 'firefox/os/index.html'
     new_home = 'firefox/os/index-new.html'
 
-    if waffle.switch_is_active('firefox-os-index-2015'):
-        if lang_file_is_active(lang_file, locale):
+    if waffle.switch_is_active('firefox-os-index-2015') and lang_file_is_active(lang_file, locale):
             return l10n_utils.render(request, new_home)
-        else:
-            return l10n_utils.render(request, old_home)
     else:
         return l10n_utils.render(request, old_home)
 

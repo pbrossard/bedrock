@@ -5,16 +5,31 @@
 ;(function($) {
     'use strict';
 
-    var fxNavConfig = {
-        primaryId: 'os'
-    };
-
-    Mozilla.FxFamilyNav.init(fxNavConfig);
+    var COUNTRY_CODE = '';
 
     var $window = $(window);
     var isSmallViewport = $window.width() < 760;
-    var $signup_content;
-    var $get_phone_content;
+    var $signupContent;
+    var $getPhoneContent;
+
+    var $appGroupSelector = $('.app-group-selector');
+    var $apps = $('img', '.apps');
+    var $categoryTriggers = $('a', $appGroupSelector);
+
+    var $demoContainer = $('.demo');
+    var $fxosHeroSpace = $('.fxos-hero-space');
+    var $phoneViewContainer = $('.phone');
+
+    var $stage = $('.stage');
+    var $scrollHomescreen = $('.scroll-homescreen');
+    var $swipeApps = $('.swipe-apps');
+
+    var fxNavConfig = {
+        primaryId: 'os',
+        subId: 'index'
+    };
+
+    Mozilla.FxFamilyNav.init(fxNavConfig);
 
     /*
     * Sign up form
@@ -24,11 +39,11 @@
 
       var cta = (this.id === 'signup-toggle-icon') ? 'Sign Me Up - Nav' : 'Sign Me Up - Primary';
 
-      if (!$signup_content) {
-        $signup_content = $('#email-form-content').detach();
+      if (!$signupContent) {
+        $signupContent = $('#email-form-content').detach();
       }
 
-      Mozilla.Modal.createModal(this, $signup_content, {
+      Mozilla.Modal.createModal(this, $signupContent, {
           allowScroll: !isSmallViewport,
           title: '<img src="/media/img/firefox/os/logo/firefox-os-white.png" alt="mozilla" />'
       });
@@ -47,11 +62,11 @@
     $('a[href="#get-device"]').on('click', function(e) {
       e.preventDefault();
 
-      if (!$get_phone_content) {
-        $get_phone_content = $('#get-device').detach();
+      if (!$getPhoneContent) {
+        $getPhoneContent= $('#get-device').detach();
       }
 
-      Mozilla.Modal.createModal(this, $get_phone_content, {
+      Mozilla.Modal.createModal(this, $getPhoneContent, {
           allowScroll: !isSmallViewport,
           title: '<img src="/media/img/firefox/os/logo/firefox-os-white.png" alt="mozilla" />'
       });
@@ -59,10 +74,6 @@
       //track GA event for get a phone CTA
       gaTrack(['_trackEvent', 'FxOs Consumer Page', 'click', 'Get a Phone']);
     });
-
-    var $appGroupSelector = $('.app-group-selector');
-    var $apps = $('img', '.apps');
-    var $categoryTriggers = $('a', $appGroupSelector);
 
     $appGroupSelector.on('click', 'a', function(event) {
         event.preventDefault();
@@ -85,14 +96,6 @@
     });
 
     $('li:first-child a', $appGroupSelector).addClass('active-state').click();
-
-    var $demoContainer = $('.demo');
-    var $fxosHeroSpace = $('.fxos-hero-space');
-    var $phoneViewContainer = $('.phone');
-
-    var $stage = $('.stage');
-    var $scrollHomescreen = $('.scroll-homescreen');
-    var $swipeApps = $('.swipe-apps');
 
     /**
      * Toggles the active-state class on all links in the container, essentially
@@ -165,7 +168,6 @@
         }
     });
 
-    var COUNTRY_CODE = '';
     window.pause_ga_tracking = false;
 
     /*

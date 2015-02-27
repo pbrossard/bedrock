@@ -24,10 +24,11 @@ def firefox_os_feed_links(locale, force_cache_refresh=False):
 
 
 @jingo.register.function
-def get_fxos_press_blog_link(locale):
-    if locale in settings.FXOS_PRESS_BLOG_LINKS:
+def firefox_os_blog_link(locale):
+    try:
         return settings.FXOS_PRESS_BLOG_LINKS[locale]
-    elif locale.find('es-') and not locale.find('es-ES'):
-        return settings.FXOS_PRESS_BLOG_LINKS['es']
-    else:
-        return settings.FXOS_PRESS_BLOG_LINKS[locale.split('-')[0]]
+    except KeyError:
+        if '-' in locale:
+            return firefox_os_blog_link(locale.split('-')[0])
+        else:
+            return None

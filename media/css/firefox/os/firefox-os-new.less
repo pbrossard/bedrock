@@ -1,8 +1,5 @@
 @import "../../sandstone/lib.less";
 
-* {
-    .border-box();
-}
 #outer-wrapper {
     background: #0c99d5 url(/media/img/firefox/os-new/raysoflight.png) 0 0 no-repeat;
 }
@@ -10,13 +7,17 @@
     background-color: #0C99D5;
     width: 100%;
     padding-bottom: 0;
+
+    * {
+        .border-box();
+    }
 }
 main {
     margin: 0 auto;
     text-align: center;
     h1 {
         background: transparent url(/media/img/firefox/os-new/fxos_wordmark420.png) 0 0 no-repeat;
-        margin: 0px auto 20px auto;
+        margin: 0px auto @baseLine auto;
         width: 440px;
         height: 84px;
 
@@ -648,39 +649,37 @@ main {
         }
     }
 }
-ul {
-    &.apps {
-        margin: 0 auto;
-        width: 90%;
-        li {
-            display: inline-block;
+ul.apps {
+    margin: 0 auto;
+    width: 90%;
+    li {
+        display: inline-block;
+        margin: 0 35px 40px 35px;
+
+        @media only screen and (max-width: 1440px) {
             margin: 0 35px 40px 35px;
+        }
+        @media only screen and (max-width: @breakMobileLandscape) {
+            margin: 0 18px 10px 18px;
+        }
+        @media only screen and (max-width: @breakMobile) {
+            margin: 0 10px 5px 10px;
+        }
+    }
+    img {
+        width: 142px;
+        height: 142px;
+        opacity: 1;
+        .transition(all .5s ease-in);
 
-            @media only screen and (max-width: 1440px) {
-                margin: 0 35px 40px 35px;
-            }
-            @media only screen and (max-width: @breakMobileLandscape) {
-                margin: 0 18px 10px 18px;
-            }
-            @media only screen and (max-width: @breakMobile) {
-                margin: 0 10px 5px 10px;
-            }
+        @media only screen and (max-width: @breakMobileLandscape) {
+            width: 71px;
+            height: 71px;
         }
-        img {
-            width: 142px;
-            height: 142px;
-            opacity: 1;
-            .transition(all .5s ease-in);
-
-            @media only screen and (max-width: @breakMobileLandscape) {
-                width: 71px;
-                height: 71px;
-            }
-        }
-        .fade {
-            .transform(scale(.5, .5));
-            opacity: .4;
-        }
+    }
+    .fade {
+        .transform(scale(.5, .5));
+        opacity: .4;
     }
 }
 .apps-marketplace {
@@ -783,7 +782,8 @@ ul {
         width: 100%;
         background: transparent;
         margin: 0 auto;
-        #form-details, .form-details {
+        #form-details,
+        .form-details {
           display: block;
         }
         h3 {
