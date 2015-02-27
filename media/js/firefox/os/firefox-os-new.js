@@ -37,8 +37,6 @@
     $('.newsletter-signup-toggle').on('click', function(e) {
       e.preventDefault();
 
-      var cta = (this.id === 'signup-toggle-icon') ? 'Sign Me Up - Nav' : 'Sign Me Up - Primary';
-
       if (!$signupContent) {
         $signupContent = $('#email-form-content').detach();
       }
@@ -49,7 +47,7 @@
       });
 
       //track GA event for newsletter CTA
-      gaTrack(['_trackEvent', 'FxOs Consumer Page', 'click', cta]);
+      gaTrack(['_trackEvent', 'FxOs Consumer Page', 'click', 'Sign Me Up - Primary']);
     });
 
     $('#sign-up-form-close').on('click', function() {
@@ -177,7 +175,6 @@
         try {
             COUNTRY_CODE = geoip_country_code().toLowerCase();
         } catch (e) {
-            console.log('error', e);
             COUNTRY_CODE = '';
         }
     }
