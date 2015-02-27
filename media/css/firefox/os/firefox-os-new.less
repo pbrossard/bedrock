@@ -262,16 +262,7 @@ main {
     height: 100px;
     opacity: 0;
     .transform(scale(0, 0));
-
-    -webkit-animation-name: throb;
-    -webkit-animation-duration: 4s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-
-    animation-name: throb;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    .animation(throb 4s ease-in-out 0 infinite normal forwards);
 }
 .try-swipe .throbber {
     top: 75px;
